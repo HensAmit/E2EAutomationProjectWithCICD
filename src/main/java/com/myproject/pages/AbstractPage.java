@@ -15,4 +15,6 @@ public abstract class AbstractPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         PageFactory.initElements(driver, this);
     }
+
+    public abstract boolean isAt();
 }

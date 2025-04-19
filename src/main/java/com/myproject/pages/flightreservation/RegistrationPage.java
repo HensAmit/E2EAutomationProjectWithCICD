@@ -1,11 +1,11 @@
 package com.myproject.pages.flightreservation;
 
+import com.myproject.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class RegistrationPage {
+public class RegistrationPage extends AbstractPage {
 
     private WebDriver driver;
 
@@ -34,8 +34,7 @@ public class RegistrationPage {
     private WebElement registerButton;
 
     public RegistrationPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void goTo(String url) {

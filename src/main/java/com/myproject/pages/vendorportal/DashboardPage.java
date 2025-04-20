@@ -18,7 +18,7 @@ public class DashboardPage extends AbstractPage {
     @FindBy(id = "annual-earning")
     private WebElement annualEarningElement;
 
-    @FindBy(id = "monthly-earning")
+    @FindBy(id = "profit-margin")
     private WebElement profitMarginElement;
 
     @FindBy(id = "available-inventory")
@@ -79,7 +79,9 @@ public class DashboardPage extends AbstractPage {
 
     public void logout() {
         this.userProfileImageElement.click();
+        this.wait.until(ExpectedConditions.visibilityOf(this.logoutLink));
         this.logoutLink.click();
+        this.wait.until(ExpectedConditions.visibilityOf(this.modalLogoutButton));
         this.modalLogoutButton.click();
     }
 }

@@ -21,7 +21,7 @@ public class VendorPortalTest extends AbstractTest {
     public void setPageObjects(String testDataPath) {
         this.loginPage = new LoginPage(driver);
         this.dashboardPage = new DashboardPage(driver);
-        testData = JsonUtil.getTestData(testDataPath);
+        testData = JsonUtil.getTestData(testDataPath, VendorPortalTestData.class);
     }
 
     @Test

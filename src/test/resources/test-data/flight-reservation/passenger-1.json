@@ -1,0 +1,11 @@
+{
+  "firstName": "michael",
+  "lastName": "jackson",
+  "email": "mj@pop.com",
+  "password": "mj",
+  "street": "main street",
+  "city": "NY",
+  "zip": "20001",
+  "passengersCount": "1",
+  "expectedPrice": "$584 USD"
+}

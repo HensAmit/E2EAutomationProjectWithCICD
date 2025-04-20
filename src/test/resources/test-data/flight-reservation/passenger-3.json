@@ -1,0 +1,11 @@
+{
+  "firstName": "dj",
+  "lastName": "khaleed",
+  "email": "dj@pop.com",
+  "password": "dj",
+  "street": "22 main street",
+  "city": "LV",
+  "zip": "20003",
+  "passengersCount": "3",
+  "expectedPrice": "$1753 USD"
+}

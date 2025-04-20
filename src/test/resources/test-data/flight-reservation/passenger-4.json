@@ -1,0 +1,11 @@
+{
+  "firstName": "derek",
+  "lastName": "william",
+  "email": "dw@pop.com",
+  "password": "dw",
+  "street": "44 main street",
+  "city": "DT",
+  "zip": "20004",
+  "passengersCount": "4",
+  "expectedPrice": "$2338 USD"
+}

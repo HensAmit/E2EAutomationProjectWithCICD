@@ -2,27 +2,20 @@ package com.myproject.tests.vendorportal;
 
 import com.myproject.pages.vendorportal.DashboardPage;
 import com.myproject.pages.vendorportal.LoginPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.myproject.tests.AbstractTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class VendorPortalTest {
+public class VendorPortalTest extends AbstractTest {
 
-    private WebDriver driver;
     private LoginPage loginPage;
     private DashboardPage dashboardPage;
 
     @BeforeTest
-    public void setDriver() {
-        WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
+    public void setPageObjects() {
         this.loginPage = new LoginPage(driver);
         this.dashboardPage = new DashboardPage(driver);
-        driver.manage().window().maximize();
     }
 
     @Test
@@ -47,10 +40,5 @@ public class VendorPortalTest {
     public void logoutTest() {
         dashboardPage.logout();
         Assert.assertTrue(loginPage.isAt());
-    }
-
-    @AfterTest
-    public void quitDriver() {
-        this.driver.quit();
     }
 }

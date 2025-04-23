@@ -12,6 +12,8 @@ import org.testng.annotations.BeforeTest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AbstractTest {
 
@@ -34,7 +36,14 @@ public class AbstractTest {
     private WebDriver getRemoteDriver() throws MalformedURLException {
         Capabilities capabilities;
         if(System.getProperty("browser").equalsIgnoreCase("chrome")) {
-            capabilities = new ChromeOptions();
+            ChromeOptions options = new ChromeOptions();
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("profile.default_content_setting_values.notifications", 2); // Block notifications
+            prefs.put("credentials_enable_service", false); // Disable password manager
+            prefs.put("password_leak_detection_enabled", false); // Disable password leak detection
+            options.setExperimentalOption("prefs", prefs);
+            options.addArguments("--incognito");
+            capabilities = options;
         } else {
             capabilities = new FirefoxOptions();
         }
@@ -43,7 +52,14 @@ public class AbstractTest {
 
     private WebDriver getLocalDriver() {
         WebDriverManager.chromedriver().setup();
-        return new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.default_content_setting_values.notifications", 2); // Block notifications
+        prefs.put("credentials_enable_service", false); // Disable password manager
+        prefs.put("password_leak_detection_enabled", false); // Disable password leak detection
+        options.setExperimentalOption("prefs", prefs);
+        options.addArguments("--incognito");
+        return new ChromeDriver(options);
     }
 
     @AfterTest

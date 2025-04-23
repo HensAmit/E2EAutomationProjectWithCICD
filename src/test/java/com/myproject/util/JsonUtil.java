@@ -1,7 +1,6 @@
 package com.myproject.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.myproject.tests.vendorportal.model.VendorPortalTestData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

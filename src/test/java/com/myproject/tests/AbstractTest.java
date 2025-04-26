@@ -2,6 +2,7 @@ package com.myproject.tests;
 
 import static com.myproject.util.Constants.*;
 
+import com.myproject.listener.TestListener;
 import com.myproject.util.ConfigUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
@@ -12,15 +13,18 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+@Listeners({TestListener.class})
 public class AbstractTest {
 
     protected WebDriver driver;
@@ -32,9 +36,10 @@ public class AbstractTest {
     }
 
     @BeforeTest
-    public void setDriver() {
+    public void setDriver(ITestContext testContext) {
         try {
             this.driver = Boolean.parseBoolean(ConfigUtil.get(GRID_ENABLED)) ? getRemoteDriver() : getLocalDriver();
+            testContext.setAttribute(DRIVER, this.driver);
         } catch(Exception e) {
             log.error("Failed in setDriver() : ", e);
         }

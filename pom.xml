@@ -77,13 +77,14 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <browser>firefox</browser>
+                        <browser>chrome</browser>
                         <selenium.grid.enabled>true</selenium.grid.enabled>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
-                        <file>test-suite.xml</file>
+                        <file>src/test/resources/test-suites/flight-reservation.xml</file>
+                        <file>src/test/resources/test-suites/vendor-portal.xml</file>
                     </suiteXmlFiles>
-                    <threadCount>1</threadCount>
+                    <threadCount>2</threadCount>
                     <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
             </plugin>

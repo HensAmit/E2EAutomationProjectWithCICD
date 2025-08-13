@@ -5,19 +5,19 @@ pipeline {
 
         stage("Build Jar") {
             steps {
-                bat 'mvn clean package -DskipTests'
+                sh "mvn clean package -DskipTests"
             }
         }
 
         stage("Build Image") {
             steps {
-                bat 'docker build -t hensamit/selenium .'
+                sh "docker build -t hensamit/selenium ./"
             }
         }
 
         stage("Push Image") {
             steps {
-                bat 'docker push hensamit/selenium'
+                sh "docker push hensamit/selenium"
             }
         }
     }

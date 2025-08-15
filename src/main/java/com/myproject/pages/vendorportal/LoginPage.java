@@ -25,6 +25,7 @@ public class LoginPage extends AbstractPage {
     public boolean isAt() {
         this.wait.until(ExpectedConditions.visibilityOf(this.loginButton));
         return this.loginButton.isDisplayed();
+        //temp
     }
 
     public void goTo(String url) {

@@ -11,7 +11,7 @@ pipeline {
 
         stage("Build Image") {
             steps {
-                sh "docker build -t hensamit/selenium ./"
+                sh "docker build -t hensamit/selenium:latest ./"
             }
         }
 
@@ -21,7 +21,9 @@ pipeline {
             }
             steps {
                 sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
-                sh "docker push hensamit/selenium"
+                sh "docker push hensamit/selenium:latest"
+                sh "docker tag hensamit/selenium:latest hensamit/selenium:${env.BUILD_NUMBER}"
+                sh "docker push hensamit/selenium:${env.BUILD_NUMBER}"
             }
         }
     }

@@ -26,6 +26,13 @@ pipeline {
                 sh "docker push hensamit/selenium:${env.BUILD_NUMBER}"
             }
         }
+
+        stage('Trigger Test Runner build') {
+            steps {
+                build job: 'SELENIUM_DOCKER_RUNNER', parameters: [string(name: 'BROWSER', value: 'chrome'),
+                string(name: 'THREAD_COUNT', value: '4')]
+            }
+        }
     }
 
     post {

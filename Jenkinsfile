@@ -1,5 +1,7 @@
 pipeline {
-    agent 'local_node'
+    agent {
+        label 'local_node'
+    }
 
     stages {
 

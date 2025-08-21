@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent 'local_node'
 
     stages {
 
@@ -30,7 +30,7 @@ pipeline {
         stage('Trigger Test Runner build') {
             steps {
                 build job: 'SELENIUM_DOCKER_RUNNER', parameters: [string(name: 'BROWSER', value: 'chrome'),
-                string(name: 'THREAD_COUNT', value: '4')]
+                string(name: 'THREAD_COUNT', value: '1')]
             }
         }
     }
